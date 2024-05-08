@@ -1,4 +1,4 @@
-FROM mongo:4.4.19
+FROM mongo:6.0.15
 
 COPY rs-init.sh /etc/mongo/rs-init.sh
 
