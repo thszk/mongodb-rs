@@ -6,7 +6,8 @@ RUN mkdir -p /etc/mongo \
     && openssl rand -base64 756 >> /etc/mongo/keyfile \
     && chmod 400 /etc/mongo/keyfile \
     && chown mongodb:mongodb /etc/mongo/keyfile \
-    && chmod +x /etc/mongo/rs-init.sh
+    && chmod +x /etc/mongo/rs-init.sh \
+    && echo "127.0.0.1 mongo" >> /etc/hosts
 
 CMD bash -c "/etc/mongo/rs-init.sh & docker-entrypoint.sh mongod --replSet mongoRS --keyFile /etc/mongo/keyfile --bind_ip_all --auth"
 
